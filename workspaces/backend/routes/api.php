@@ -22,7 +22,7 @@ Route::group([
     'middleware' => 'api',
     'prefix' => 'auth'
 
-], function ($router) {
+], function () {
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/logout', [AuthController::class, 'logout']);
@@ -33,7 +33,7 @@ Route::group([
 Route::group([
     'prefix' => 'offers'
 
-], function ($router) {
+], function () {
     Route::post('/create-offer', [OfferController::class, 'createOffer']);
     Route::get('/get-all', [OfferController::class, 'getOffers']);
     Route::get('/get-offers-for-user/{user_id}', [OfferController::class,'getOffersForUser']);
