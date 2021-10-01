@@ -17,4 +17,5 @@ export interface ApiUser {
   updated_at: string;
   created_at: string;
   id: number;
+  user_id: string;
 }
