@@ -1,7 +1,9 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ContextProvider } from './components/context';
+import { Header } from './components/header/Header';
 import './index.scss';
 import { Home } from './pages/home';
 import { Login } from './pages/login';

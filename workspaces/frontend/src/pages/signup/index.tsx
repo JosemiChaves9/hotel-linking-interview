@@ -1,5 +1,12 @@
 import { useForm } from 'react-hook-form';
+import {
+  IoPersonCircle,
+  IoKey,
+  IoCheckmark,
+  IoAtOutline,
+} from 'react-icons/io5';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 import { ApiService } from '../../services/ApiService';
 import { LocalStorageService } from '../../services/LocalStorageService';
 
@@ -32,26 +39,78 @@ export const Signup = () => {
 
   return (
     <>
-      <h1>Im a Signup page</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input {...register('name')} type='text' placeholder='name' />
-        <input
-          {...register('email')}
-          type='email'
-          placeholder='mail@example.com'
-        />
-        <input
-          {...register('password')}
-          type='password'
-          placeholder='********'
-        />
-        <input
-          {...register('password_confirmation')}
-          type='password'
-          placeholder='********'
-        />
-        <button>Send</button>
-      </form>
+      <div className='container-fluid vh-100 mt-5'>
+        <div className='mt-3'>
+          <div className='rounded d-flex justify-content-center'>
+            <div className='col-md-4 col-sm-12 shadow-lg p-5 bg-light'>
+              <div className='text-center'>
+                <h3 className='text-primary'>Sign Up</h3>
+              </div>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div className='p-4'>
+                  <div className='input-group mb-3'>
+                    <span className='input-group-text bg-primary'>
+                      <IoPersonCircle color='white' size='24px' />
+                    </span>
+                    <input
+                      {...register('name')}
+                      type='text'
+                      className='form-control'
+                      placeholder='Name'
+                    />
+                  </div>
+                  <div className='input-group mb-3'>
+                    <span className='input-group-text bg-primary'>
+                      <IoAtOutline color='white' size='24px' />
+                    </span>
+                    <input
+                      {...register('email')}
+                      type='email@example.com'
+                      className='form-control'
+                      placeholder='example@mail.com'
+                    />
+                  </div>
+                  <div className='input-group mb-3'>
+                    <span className='input-group-text bg-primary'>
+                      <IoKey color='white' size='24px' />
+                    </span>
+                    <input
+                      {...register('password')}
+                      type='password'
+                      className='form-control'
+                      placeholder='Password'
+                    />
+                  </div>
+                  <div className='input-group mb-3'>
+                    <span className='input-group-text bg-primary'>
+                      <IoCheckmark color='white' size='24px' />
+                    </span>
+                    <input
+                      {...register('password_confirmation')}
+                      type='password'
+                      className='form-control'
+                      placeholder='Password confirm'
+                    />
+                  </div>
+
+                  <button
+                    className='btn btn-primary text-center mt-2'
+                    type='submit'>
+                    Signup
+                  </button>
+
+                  <p className='text-center mt-5'>
+                    Alrrady have an account?
+                    <Link to='/login'>
+                      <span className='text-primary'>Log in</span>
+                    </Link>
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

@@ -20,8 +20,8 @@ export const MyOffers = () => {
   }, [user]);
   return (
     <>
-      <Header message="The offers you've obtained" />
-      <div className='gridContainer'>
+      <Header />
+      <div className='gridContainer m-3'>
         {offers.map((offer) => (
           <ObtainedOfferCard
             offer_name={offer.offer_name}

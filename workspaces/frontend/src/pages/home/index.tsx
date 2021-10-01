@@ -20,9 +20,8 @@ export const Home = () => {
 
   return (
     <>
-      <Header message={`Welcome ${user?.name}, check this offers!`} />
-
-      <div className='gridContainer'>
+      <Header />
+      <div className='gridContainer m-3'>
         {offers.map((offer: ApiOffer) => (
           <OfferCard offer_name={offer.offer_name} offer_id={offer.offer_id} />
         ))}

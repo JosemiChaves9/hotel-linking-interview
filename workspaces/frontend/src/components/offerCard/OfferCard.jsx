@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import { ApiService } from '../../services/ApiService';
 import { UserContext } from '../context';
-import './index.scss';
 
 export const OfferCard = ({ offer_name, offer_id }) => {
   const { user } = useContext(UserContext);
@@ -13,11 +12,17 @@ export const OfferCard = ({ offer_name, offer_id }) => {
     });
   };
   return (
-    <div className='card'>
-      <h3>{offer_name}</h3>
-      <button onClick={() => obtainOffer(offer_id, user.user_id)}>
-        Obtain this offer
-      </button>
+    <div class='card'>
+      <div class='card-body'>
+        <h5 class='card-title'>{offer_name}</h5>
+        <p class='card-text'>Get this awesome offer of {offer_name}</p>
+        <a
+          onClick={() => obtainOffer(offer_id, user.user_id)}
+          class='btn btn-primary'>
+          {' '}
+          Obtain this offer
+        </a>
+      </div>
     </div>
   );
 };
