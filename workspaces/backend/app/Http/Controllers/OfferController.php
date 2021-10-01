@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Offer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OfferController extends Controller
 {
@@ -13,25 +14,44 @@ class OfferController extends Controller
         $offer->offer_name = $request->offer_name;
         $offer->user_id = '';
         $offer->save();
-
+        
         return response()->json(["message" => "Offer created", 201]);
     }
 
     public function getOffers(){
-        $offers = Offer::get()->toJson();
+        $offers = DB::table('offers')->where('user_id', '')->get();
         return response($offers, 200);
     }
 
-    public function obtainOffer($offer_id){
-        if (Offer::where('offer_id', $offer_id)->exists()){
-            $offer = Offer::where('offer_id', $offer_id)->get()->toJson(JSON_PRETTY_PRINT);
-            return response($offer, 200);
+     public function getOffersForUser($user_id){
+        $offers = DB::table('offers')->where('user_id', $user_id)->get();
+        return response($offers, 200);
+    }
+
+    public function obtainOffer(Request $request){
+        if (DB::table('offers')->where('offer_id', $request->offer_id)->exists()){
+           DB::table('offers')->where('offer_id', $request->offer_id)->update(['user_id'=> $request->user_id]);
+
+           return response('Offer added to your profile', 201);
         } else {
             return response()->json([
-                "message"=>$offer_id
+                "message"=>"This offer doesn't exists"
             ], 404);
         }
 
     }
+
+    public function redeemOffer(Request $request){
+         if (DB::table('offers')->where('offer_id', $request->offer_id)->exists()){
+           DB::table('offers')->where('offer_id', $request->offer_id)->delete();
+
+           return response('Offer redeemed!', 201);
+        } else {
+            return response()->json([
+                "message"=>"This offer doesn't exists"
+            ], 404);
+        }
+    }
+    
 
 }

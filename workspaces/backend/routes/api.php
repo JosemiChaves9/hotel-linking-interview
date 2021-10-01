@@ -14,6 +14,10 @@ use App\Http\Controllers\OfferController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+
+Route::get('/test', [OfferController::class, 'getUserByEmail']);
+
 Route::group([
     'middleware' => 'api',
     'prefix' => 'auth'
@@ -32,5 +36,8 @@ Route::group([
 ], function ($router) {
     Route::post('/create-offer', [OfferController::class, 'createOffer']);
     Route::get('/get-all', [OfferController::class, 'getOffers']);
-    Route::put('/obtain-offer/{offer_id}', [OfferController::class, 'obtainOffer']);
+    Route::get('/get-offers-for-user/{user_id}', [OfferController::class,'getOffersForUser']);
+    Route::post('/obtain-offer', [OfferController::class, 'obtainOffer']);
+    Route::delete('/redeem-offer', [OfferController::class, 'redeemOffer']);
+
 });

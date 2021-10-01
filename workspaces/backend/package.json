@@ -5,6 +5,7 @@
     "scripts": {
         "dev": "npm run development",
         "development": "mix",
+        "start": "php artisan serve",
         "watch": "mix watch",
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
@@ -16,5 +17,9 @@
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14"
+    },
+    "dependencies": {
+        "browser-sync": "^2.27.5",
+        "browser-sync-webpack-plugin": "^2.3.0"
     }
 }

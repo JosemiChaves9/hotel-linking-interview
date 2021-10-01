@@ -66,9 +66,24 @@ export class ApiService {
     );
   }
 
+  static async getObtainedOffers(user_id: string) {
+    return instance.get(`offers/get-offers-for-user/${user_id}`).then(
+      (res: AxiosResponse<ApiOffer>) => {
+        return res;
+      },
+      (rej) => rej
+    );
+  }
+
   static async obtainOffer(offer_id: string, user_id: string) {
     return instance
-      .put('offers/obtain-offer', { offer_id, user_id })
-      .then((res) => console.log(res));
+      .post('offers/obtain-offer', { offer_id, user_id })
+      .then((res) => res);
+  }
+
+  static async redeemOffer(offer_id: string, user_id: string) {
+    return instance
+      .delete('offers/redeem-offer', { data: { offer_id, user_id } })
+      .then((res) => res);
   }
 }
