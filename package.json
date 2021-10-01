@@ -1,0 +1,13 @@
+{
+  "name": "hotel-linking-interview",
+  "private": "true",
+  "version": "1.0.0",
+  "license": "MIT",
+  "workspaces": [
+    "workspaces/*"
+  ],
+  "scripts": {
+    "startFront": "yarn workspace frontend start",
+    "startBack": "yarn workspace backend start"
+  }
+}
