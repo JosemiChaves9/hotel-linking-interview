@@ -1,9 +1,9 @@
 import './index.scss';
 
-export const OfferCard = () => {
+export const OfferCard = ({ offer_name }) => {
   return (
     <article className='card'>
-      <h3>Offer #1</h3> <button>Obtain this offer</button>
+      <h3>{offer_name}</h3> <button>Obtain this offer</button>
     </article>
   );
 };

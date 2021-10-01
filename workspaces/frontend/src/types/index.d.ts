@@ -19,3 +19,11 @@ export interface ApiUser {
   id: number;
   user_id: string;
 }
+export interface ApiOffer {
+  id: string;
+  offer_id: string;
+  offer_name: string;
+  user_id: string;
+  created_at: string;
+  updated_at: string;
+}
