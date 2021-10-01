@@ -1,9 +1,11 @@
 import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router';
 import { ApiService } from '../../services/ApiService';
 import { LocalStorageService } from '../../services/LocalStorageService';
 
 export const Login = () => {
   const { register, handleSubmit } = useForm();
+  const history = useHistory();
 
   const onSubmit = ({
     email,
@@ -12,9 +14,10 @@ export const Login = () => {
     email: string;
     password: string;
   }) => {
-    ApiService.login(email, password).then((res) =>
-      LocalStorageService.setToken(res.data.access_token)
-    );
+    ApiService.login(email, password).then((res) => {
+      LocalStorageService.setToken(res.data.access_token);
+      history.push('/');
+    });
   };
 
   return (

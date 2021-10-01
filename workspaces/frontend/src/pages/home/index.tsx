@@ -1,10 +1,10 @@
-import { off } from 'process';
 import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../components/context';
 import { Header } from '../../components/header/Header';
 import { OfferCard } from '../../components/offerCard/OfferCard';
 import { ApiService } from '../../services/ApiService';
 import { ApiOffer } from '../../types';
+import './index.scss';
 
 export const Home = () => {
   const { user } = useContext(UserContext);
@@ -21,10 +21,12 @@ export const Home = () => {
   return (
     <>
       <Header message={`Welcome ${user?.name}, check this offers!`} />
-      {offers.map((offer: ApiOffer) => (
-        <OfferCard offer_name={offer.offer_name} offer_id={offer.offer_id} />
-      ))}
-      <div className='gridContainer'></div>
+
+      <div className='gridContainer'>
+        {offers.map((offer: ApiOffer) => (
+          <OfferCard offer_name={offer.offer_name} offer_id={offer.offer_id} />
+        ))}
+      </div>
     </>
   );
 };

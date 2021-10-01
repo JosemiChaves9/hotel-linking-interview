@@ -27,3 +27,8 @@ export interface ApiOffer {
   created_at: string;
   updated_at: string;
 }
+
+export interface GenericApiResponse {
+  message: string;
+  0: number;
+}

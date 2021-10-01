@@ -4,6 +4,7 @@ import {
   ApiOffer,
   ApiRegisterResponse,
   ApiUser,
+  GenericApiResponse,
 } from '../types';
 import { LocalStorageService } from './LocalStorageService';
 
@@ -50,7 +51,7 @@ export class ApiService {
 
   static async newOffer(offer_name: string) {
     return instance.post('offers/create-offer', { offer_name }).then(
-      (res: AxiosResponse<any>) => {
+      (res: AxiosResponse<GenericApiResponse>) => {
         return res;
       },
       (rej) => rej
@@ -78,12 +79,12 @@ export class ApiService {
   static async obtainOffer(offer_id: string, user_id: string) {
     return instance
       .post('offers/obtain-offer', { offer_id, user_id })
-      .then((res) => res);
+      .then((res: AxiosResponse<GenericApiResponse>) => res);
   }
 
   static async redeemOffer(offer_id: string, user_id: string) {
     return instance
       .delete('offers/redeem-offer', { data: { offer_id, user_id } })
-      .then((res) => res);
+      .then((res: AxiosResponse<GenericApiResponse>) => res);
   }
 }

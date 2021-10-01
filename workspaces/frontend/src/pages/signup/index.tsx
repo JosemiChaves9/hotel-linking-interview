@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router';
 import { ApiService } from '../../services/ApiService';
 import { LocalStorageService } from '../../services/LocalStorageService';
 
@@ -11,6 +12,7 @@ type userCredentials = {
 
 export const Signup = () => {
   const { register, handleSubmit } = useForm();
+  const history = useHistory();
 
   const onSubmit = ({
     name,
@@ -20,9 +22,10 @@ export const Signup = () => {
   }: userCredentials) => {
     ApiService.register(name, email, password, password_confirmation).then(
       () =>
-        ApiService.login(email, password).then((res) =>
-          LocalStorageService.setToken(res.data.access_token)
-        ),
+        ApiService.login(email, password).then((res) => {
+          LocalStorageService.setToken(res.data.access_token);
+          history.push('/');
+        }),
       (rej) => console.log(rej)
     );
   };

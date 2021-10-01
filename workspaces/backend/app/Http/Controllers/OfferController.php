@@ -32,7 +32,7 @@ class OfferController extends Controller
         if (DB::table('offers')->where('offer_id', $request->offer_id)->exists()){
            DB::table('offers')->where('offer_id', $request->offer_id)->update(['user_id'=> $request->user_id]);
 
-           return response('Offer added to your profile', 201);
+           return response()->json(["message"=>'Offer added to your profile'], 200);
         } else {
             return response()->json([
                 "message"=>"This offer doesn't exists"

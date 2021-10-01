@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../components/context';
 import { Header } from '../../components/header/Header';
-import { ObtainedOfferCard } from '../../components/obtainedOfferCard copy/ObtainedOfferCard';
+import { ObtainedOfferCard } from '../../components/obtainedOfferCard/ObtainedOfferCard';
 import { ApiService } from '../../services/ApiService';
 import { ApiOffer } from '../../types';
+import './index.scss';
 
 export const MyOffers = () => {
   const { user } = useContext(UserContext);
