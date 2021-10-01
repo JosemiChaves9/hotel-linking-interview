@@ -1,6 +1,5 @@
 import { useForm } from 'react-hook-form';
 import { ApiService } from '../../services/ApiService';
-
 export const OffersForm = () => {
   const { register, handleSubmit } = useForm();
 

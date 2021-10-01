@@ -32,6 +32,7 @@ export const Signup = () => {
         ApiService.login(email, password).then((res) => {
           LocalStorageService.setToken(res.data.access_token);
           history.push('/');
+          window.location.reload();
         }),
       (rej) => console.log(rej)
     );
@@ -54,6 +55,7 @@ export const Signup = () => {
                     </span>
                     <input
                       {...register('name')}
+                      required
                       type='text'
                       className='form-control'
                       placeholder='Name'
@@ -65,6 +67,7 @@ export const Signup = () => {
                     </span>
                     <input
                       {...register('email')}
+                      required
                       type='email@example.com'
                       className='form-control'
                       placeholder='example@mail.com'
@@ -76,6 +79,7 @@ export const Signup = () => {
                     </span>
                     <input
                       {...register('password')}
+                      required
                       type='password'
                       className='form-control'
                       placeholder='Password'
@@ -87,6 +91,7 @@ export const Signup = () => {
                     </span>
                     <input
                       {...register('password_confirmation')}
+                      required
                       type='password'
                       className='form-control'
                       placeholder='Password confirm'

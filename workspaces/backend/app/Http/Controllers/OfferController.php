@@ -45,7 +45,7 @@ class OfferController extends Controller
          if (DB::table('offers')->where('offer_id', $request->offer_id)->exists()){
            DB::table('offers')->where('offer_id', $request->offer_id)->delete();
 
-           return response('Offer redeemed!', 201);
+           return response()->json(["message"=>'Offer redeemed!'], 200);
         } else {
             return response()->json([
                 "message"=>"This offer doesn't exists"

@@ -18,6 +18,7 @@ export const Login = () => {
     ApiService.login(email, password).then((res) => {
       LocalStorageService.setToken(res.data.access_token);
       history.push('/');
+      window.location.reload();
     });
   };
 
@@ -37,6 +38,7 @@ export const Login = () => {
                   </span>
                   <input
                     {...register('email')}
+                    required
                     type='email'
                     className='form-control'
                     placeholder='Email'
@@ -48,6 +50,7 @@ export const Login = () => {
                   </span>
                   <input
                     {...register('password')}
+                    required
                     type='password'
                     className='form-control'
                     placeholder='password'

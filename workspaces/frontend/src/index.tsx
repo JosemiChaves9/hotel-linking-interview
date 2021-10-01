@@ -13,15 +13,15 @@ import { Signup } from './pages/signup';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ContextProvider>
-      <Router>
+    <Router>
+      <ContextProvider>
         <Route exact path='/' component={Home} />
         <Route path='/myOffers' component={MyOffers} />
         <Route path='/login' component={Login} />
         <Route path='/signup' component={Signup} />
         <Route path='/newOffer' component={OffersForm} />
-      </Router>
-    </ContextProvider>
+      </ContextProvider>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
