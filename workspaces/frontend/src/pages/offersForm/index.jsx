@@ -4,7 +4,7 @@ export const OffersForm = () => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = ({ offerName }) => {
-    ApiService.newOffer(offerName).then((res) => console.log(res));
+    ApiService.newOffer(offerName);
   };
   return (
     <form className='w-25 m-auto mt-3' onSubmit={handleSubmit(onSubmit)}>

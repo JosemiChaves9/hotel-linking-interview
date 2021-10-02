@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import {
   IoPersonCircle,
@@ -20,6 +21,7 @@ type userCredentials = {
 export const Signup = () => {
   const { register, handleSubmit } = useForm();
   const history = useHistory();
+  const [error, setError] = useState({ visibility: false, message: [''] });
 
   const onSubmit = ({
     name,
@@ -27,17 +29,31 @@ export const Signup = () => {
     password,
     password_confirmation,
   }: userCredentials) => {
+    setError({ visibility: false, message: [''] });
+
     ApiService.register(name, email, password, password_confirmation).then(
-      () =>
+      (res) => {
+        if (!res) {
+          history.push('/error');
+          return;
+        }
+        if (res.status !== 201) {
+          const arr = new Array(Object.values(res.data));
+          const errorMessages = arr[0].map((message: any) => message[0]);
+          setError({
+            visibility: true,
+            message: errorMessages,
+          });
+          return;
+        }
         ApiService.login(email, password).then((res) => {
           LocalStorageService.setToken(res.data.access_token);
           history.push('/');
           window.location.reload();
-        }),
-      (rej) => console.log(rej)
+        });
+      }
     );
   };
-
   return (
     <>
       <div className='container-fluid vh-100 mt-5'>
@@ -97,6 +113,16 @@ export const Signup = () => {
                       placeholder='Password confirm'
                     />
                   </div>
+
+                  {error.visibility && (
+                    <>
+                      {error.message.map((messages) => (
+                        <div className='alert alert-danger' role='alert'>
+                          {messages}
+                        </div>
+                      ))}
+                    </>
+                  )}
 
                   <button
                     className='btn btn-primary text-center mt-2'

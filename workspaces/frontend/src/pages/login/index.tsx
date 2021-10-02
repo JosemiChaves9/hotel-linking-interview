@@ -4,8 +4,11 @@ import { ApiService } from '../../services/ApiService';
 import { LocalStorageService } from '../../services/LocalStorageService';
 import { IoAtOutline, IoKey } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+
 export const Login = () => {
   const { register, handleSubmit } = useForm();
+  const [error, setError] = useState({ visibility: false, message: '' });
   const history = useHistory();
 
   const onSubmit = ({
@@ -15,7 +18,16 @@ export const Login = () => {
     email: string;
     password: string;
   }) => {
+    setError({ visibility: false, message: '' });
     ApiService.login(email, password).then((res) => {
+      if (!res) {
+        history.push('/error');
+        return;
+      }
+      if (res.status !== 200) {
+        setError({ visibility: true, message: res.data.error });
+        return;
+      }
       LocalStorageService.setToken(res.data.access_token);
       history.push('/');
       window.location.reload();
@@ -56,7 +68,11 @@ export const Login = () => {
                     placeholder='password'
                   />
                 </div>
-
+                {error.visibility && (
+                  <div className='alert alert-danger  ' role='alert'>
+                    {error.message}
+                  </div>
+                )}
                 <button
                   className='btn btn-primary text-center mt-2'
                   type='submit'>

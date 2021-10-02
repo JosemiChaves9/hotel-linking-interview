@@ -18,11 +18,18 @@ export const MyOffers = () => {
       return;
     }
     if (user) {
-      ApiService.getObtainedOffers(user.user_id).then((res) => {
-        if (res.data) {
-          setOffers(res.data);
-        }
-      });
+      ApiService.getObtainedOffers(user.user_id).then(
+        (res) => {
+          if (!res) {
+            history.push('/error');
+            return;
+          }
+          if (res.data) {
+            setOffers(res.data);
+          }
+        },
+        () => history.push('/error')
+      );
     }
   }, [user]);
   return (

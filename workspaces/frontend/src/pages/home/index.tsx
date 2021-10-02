@@ -16,11 +16,13 @@ export const Home = () => {
       history.push('/login');
       return;
     }
-
     ApiService.getOffers().then((res: any) => {
+      if (!res) {
+        history.push('/error');
+        return;
+      }
       if (res.data) {
         setOffers(res.data);
-      } else {
       }
     });
   }, []);
