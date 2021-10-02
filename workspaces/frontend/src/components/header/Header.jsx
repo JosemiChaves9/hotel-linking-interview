@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { UserContext } from '../context';
 import { LocalStorageService } from '../../services/LocalStorageService';
 import { useHistory } from 'react-router';
+import './index.scss';
 export const Header = () => {
   const { user } = useContext(UserContext);
   const history = useHistory();
@@ -33,12 +34,12 @@ export const Header = () => {
           <div className='navbar-collapse collapse w-100 order-3 dual-collapse2'>
             {user && (
               <ul className='navbar-nav ms-auto'>
-                <li className='nav-item'>
-                  <a className='nav-link active'>Logged as: {user.email}</a>
+                <li className='nav-item m-auto text-light '>
+                  Logged as: {user.email}
                 </li>
                 <li className='nav-item'>
                   <a
-                    className='nav-link active'
+                    className='nav-link logout'
                     onClick={() => {
                       LocalStorageService.removeItem('access_token');
                       history.push('/login');
