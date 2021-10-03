@@ -16,7 +16,6 @@ use App\Http\Controllers\OfferController;
 */
 
 
-Route::get('/test', [OfferController::class, 'getUserByEmail']);
 
 Route::group([
     'middleware' => 'api',

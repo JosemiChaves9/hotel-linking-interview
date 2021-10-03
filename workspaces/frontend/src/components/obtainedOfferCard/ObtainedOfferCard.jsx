@@ -33,7 +33,7 @@ export const ObtainedOfferCard = ({ offer_name, offer_id }) => {
               redeemOfer(offer_id, user.user_id);
             }}
             class='btn btn-primary'>
-            Obtain this offer!
+            Redeem this offer!
           </button>
         )}
       </div>
