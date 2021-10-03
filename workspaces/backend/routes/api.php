@@ -26,18 +26,16 @@ Route::group([
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
-    Route::get('/user-profile', [AuthController::class, 'userProfile']);    
+    Route::get('/user-profile', [AuthController::class, 'userProfile']); 
+    Route::delete('/delete-user', [AuthController::class, 'deleteUser']);
 });
 
 Route::group([
-    'middleware' => 'bearer',
     'prefix' => 'offers'
-
 ], function () {
     Route::post('/create-offer', [OfferController::class, 'createOffer']);
     Route::get('/get-all', [OfferController::class, 'getOffers']);
     Route::get('/get-offers-for-user/{user_id}', [OfferController::class,'getOffersForUser']);
     Route::post('/obtain-offer', [OfferController::class, 'obtainOffer']);
     Route::delete('/redeem-offer', [OfferController::class, 'redeemOffer']);
-
 });

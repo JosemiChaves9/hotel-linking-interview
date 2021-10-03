@@ -16,7 +16,7 @@ class OfferController extends Controller
         $offer->user_id = '';
         $offer->save();
         
-        return response()->json(["message" => "Offer created", 201]);
+        return response()->json(["message" => "Offer created"], 201);
     }
 
     public function getOffers(){
@@ -54,5 +54,6 @@ class OfferController extends Controller
         }
     }
     
+   
 
 }

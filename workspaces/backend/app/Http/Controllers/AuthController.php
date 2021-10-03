@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -18,7 +19,7 @@ class AuthController extends Controller
      * @return void
      */
     public function __construct() {
-        $this->middleware('auth:api', ['except' => ['login', 'register']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register', 'deleteUser']]);
     }
 
     /**
@@ -114,6 +115,12 @@ class AuthController extends Controller
             'expires_in' => Auth::factory()->getTTL() * 60,
             'user' => auth()->user()
         ]);
+    }
+
+     function deleteUser(Request $request){
+        DB::table('users')->where('email', $request->email)->delete();
+
+        return response('user deleted', 200);
     }
 
 }
