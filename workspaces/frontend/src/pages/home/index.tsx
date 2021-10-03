@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react';
+import { userInfo } from 'os';
+import { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
+import { UserContext } from '../../components/context';
 import { Header } from '../../components/header/Header';
 import { OfferCard } from '../../components/offerCard/OfferCard';
 import { ApiService } from '../../services/ApiService';
@@ -10,6 +12,7 @@ import './index.scss';
 export const Home = () => {
   const [offers, setOffers] = useState<ApiOffer[]>([]);
   const history = useHistory();
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     if (!LocalStorageService.getToken()) {
@@ -27,9 +30,14 @@ export const Home = () => {
     });
   }, [history]);
 
+  const logout = () => {
+    LocalStorageService.removeItem('access_token');
+    history.push('/login');
+  };
+
   return (
     <>
-      <Header />
+      <Header userEmail={user ? user?.email : ''} logout={logout} />
       <div className='gridContainer m-3'>
         {offers.map((offer: ApiOffer) => (
           <OfferCard

@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
-import { UserContext } from '../context';
-import { LocalStorageService } from '../../services/LocalStorageService';
-import { useHistory } from 'react-router';
+
 import './index.scss';
-export const Header = () => {
-  const { user } = useContext(UserContext);
-  const history = useHistory();
+export const Header = ({
+  userEmail,
+  logout,
+}: {
+  userEmail: string;
+  logout: () => void;
+}) => {
   const path = window.location.pathname;
   return (
     <>
@@ -36,23 +37,18 @@ export const Header = () => {
           </div>
 
           <div className='navbar-collapse collapse w-100 order-3 dual-collapse2'>
-            {user && (
-              <ul className='navbar-nav ms-auto'>
-                <li className='nav-item m-auto text-light '>
-                  Logged as: {user.email}
-                </li>
-                <li className='nav-item'>
-                  <button
-                    className='nav-link logout btn btn-link'
-                    onClick={() => {
-                      LocalStorageService.removeItem('access_token');
-                      history.push('/login');
-                    }}>
-                    Logout
-                  </button>
-                </li>
-              </ul>
-            )}
+            <ul className='navbar-nav ms-auto'>
+              <li className='nav-item m-auto text-light '>
+                Logged as: {userEmail}
+              </li>
+              <li className='nav-item'>
+                <button
+                  className='nav-link logout btn btn-link'
+                  onClick={() => logout()}>
+                  Logout
+                </button>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>

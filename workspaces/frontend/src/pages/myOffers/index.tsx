@@ -32,9 +32,14 @@ export const MyOffers = () => {
       );
     }
   }, [user, history]);
+  const logout = () => {
+    LocalStorageService.removeItem('access_token');
+    history.push('/login');
+  };
   return (
     <>
-      <Header />
+      <Header userEmail={user ? user?.email : ''} logout={logout} />
+
       <div className='gridContainer m-3'>
         {offers.map((offer) => (
           <ObtainedOfferCard

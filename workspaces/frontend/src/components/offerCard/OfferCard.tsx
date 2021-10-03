@@ -13,7 +13,6 @@ export const OfferCard = ({
   const [obtained, setObtained] = useState(false);
   const obtainOffer = (offer_id: string, user_id: string) => {
     ApiService.obtainOffer(offer_id, user_id).then((res) => {
-      console.log(res);
       if (res.status === 200) {
         setObtained(true);
       }
