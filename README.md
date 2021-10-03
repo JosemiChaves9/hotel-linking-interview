@@ -58,10 +58,12 @@ You can clone the project in several ways:
 
   If everything worked fine you'll have the database initalized!
 
-## Initalize project
-1. **Install npm, yarn, node.js and Composer**
+## 
 
-    Follow these [tutorial](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) for installing Node.js and npm, once you have installed npm you can install yarn with npm install -g yarn, and finally can install [Composer](https://getcomposer.org/download/).
+## Initalize project
+1. **Install php, npm, yarn, node.js and Composer**
+
+    Follow these [tutorial](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) for installing Node.js and npm, once you have installed npm you can install yarn with `npm install -g yarn`, then you install PHP (follow [this tutorial](https://kinsta.com/blog/install-php/)) and finally you can install [Composer](https://getcomposer.org/download/).
 
 2. **Install dependencies**
     - in workspaces/backend run `composer install`
