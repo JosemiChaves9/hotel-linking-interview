@@ -2,11 +2,17 @@ import { useContext, useState } from 'react';
 import { ApiService } from '../../services/ApiService';
 import { UserContext } from '../context';
 
-export const ObtainedOfferCard = ({ offer_name, offer_id }) => {
+export const ObtainedOfferCard = ({
+  offer_name,
+  offer_id,
+}: {
+  offer_name: string;
+  offer_id: string;
+}) => {
   const { user } = useContext(UserContext);
   const [reedemed, setReedemed] = useState(false);
 
-  const redeemOfer = (offer_id, user_id) => {
+  const redeemOfer = (offer_id: string, user_id: string) => {
     ApiService.redeemOffer(offer_id, user_id).then((res) => {
       if (res.status === 200) {
         setReedemed(true);
@@ -22,17 +28,17 @@ export const ObtainedOfferCard = ({ offer_name, offer_id }) => {
         {reedemed ? (
           <button
             onClick={() => {
-              redeemOfer(offer_id, user.user_id);
+              user && redeemOfer(offer_id, user.user_id);
             }}
-            class='btn btn-success'>
-            Offer reedemed!{' '}
+            className='btn btn-success'>
+            Offer reedemed!
           </button>
         ) : (
           <button
             onClick={() => {
-              redeemOfer(offer_id, user.user_id);
+              user && redeemOfer(offer_id, user.user_id);
             }}
-            class='btn btn-primary'>
+            className='btn btn-primary'>
             Redeem this offer!
           </button>
         )}

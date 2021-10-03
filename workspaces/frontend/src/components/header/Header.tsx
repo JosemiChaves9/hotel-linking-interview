@@ -16,17 +16,21 @@ export const Header = () => {
             <ul className='navbar-nav me-auto'>
               <Link to='/' className='text-decoration-none'>
                 <li className='nav-item'>
-                  <a className={`nav-link ${path === '/' && 'active'}`}>
+                  <button
+                    className={`nav-link btn btn-link ${
+                      path === '/' && 'active'
+                    }`}>
                     Offers
-                  </a>
+                  </button>
                 </li>
               </Link>
               <Link to='/myOffers' className='text-decoration-none'>
-                <li className='nav-item' to={'/signup'}>
-                  <a className={`nav-link ${path === '/myOffers' && 'active'}`}>
-                    My Offers
-                  </a>
-                </li>
+                <button
+                  className={`nav-link btn btn-link ${
+                    path === '/myOffers' && 'active'
+                  }`}>
+                  My Offers
+                </button>
               </Link>
             </ul>
           </div>
@@ -38,14 +42,14 @@ export const Header = () => {
                   Logged as: {user.email}
                 </li>
                 <li className='nav-item'>
-                  <a
-                    className='nav-link logout'
+                  <button
+                    className='nav-link logout btn btn-link'
                     onClick={() => {
                       LocalStorageService.removeItem('access_token');
                       history.push('/login');
                     }}>
                     Logout
-                  </a>
+                  </button>
                 </li>
               </ul>
             )}

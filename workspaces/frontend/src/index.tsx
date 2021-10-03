@@ -9,7 +9,7 @@ import { Error } from './pages/error';
 import { Home } from './pages/home';
 import { Login } from './pages/login';
 import { MyOffers } from './pages/myOffers';
-import { OffersForm } from './pages/offersForm';
+import { NewOffer } from './pages/newOffer';
 import { Signup } from './pages/signup';
 
 ReactDOM.render(
@@ -21,7 +21,7 @@ ReactDOM.render(
           <Route path='/myOffers' component={MyOffers} />
           <Route path='/login' component={Login} />
           <Route path='/signup' component={Signup} />
-          <Route path='/newOffer' component={OffersForm} />
+          <Route path='/newOffer' component={NewOffer} />
           <Route path='/error' component={Error} />
           <Route component={Page404} />
         </Switch>

@@ -31,7 +31,7 @@ export const MyOffers = () => {
         () => history.push('/error')
       );
     }
-  }, [user]);
+  }, [user, history]);
   return (
     <>
       <Header />

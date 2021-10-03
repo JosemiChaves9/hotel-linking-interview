@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router';
 import { ApiService } from '../../services/ApiService';
 import { LocalStorageService } from '../../services/LocalStorageService';
 import { ApiUser } from '../../types';
@@ -11,9 +10,8 @@ interface Context {
 export const UserContext = React.createContext<Context>({
   user: null,
 });
-export const ContextProvider = ({ children }: any) => {
+export const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
   const [user, setUser] = useState<ApiUser | null>(null);
-  const history = useHistory();
 
   const getUser = async () => {
     await ApiService.userProfile().then(

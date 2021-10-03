@@ -14,13 +14,10 @@ export const Page404 = () => {
 
           <div className='card-body mx-auto'>
             <Link to='/'>
-              <a
-                type='button'
-                href='#'
-                className='btn btn-sm btn-info text-white'>
+              <button type='button' className='btn btn-sm btn-info text-white'>
                 {' '}
                 Back To Home{' '}
-              </a>
+              </button>
             </Link>
           </div>
         </div>

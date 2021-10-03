@@ -1,13 +1,35 @@
-export interface ApiRegisterResponse {
-  message: string;
-  user: ApiUser;
+export interface ApiLoginResponse {
+  data: {
+    access_token: string;
+    token_type: string;
+    expires_in: number;
+    user: ApiUser;
+    error: string;
+  };
+  status: number;
+  statusText: string;
 }
 
-export interface ApiLoginResponse {
-  access_token: string;
-  token_type: string;
-  expires_in: number;
-  user: ApiUser;
+export interface ApiNewOfferResponse {
+  data: {
+    message: string;
+  };
+  status: number;
+  statusText: string;
+}
+
+export interface ApiGetOffersResponse {
+  data: ApiOffer[];
+  status: number;
+  statusText: string;
+}
+
+export interface ApiObtainOrRedeemOfferResponse {
+  data: {
+    message: string;
+  };
+  status: number;
+  statusText: string;
 }
 
 export interface ApiUser {
@@ -31,4 +53,13 @@ export interface ApiOffer {
 export interface GenericApiResponse {
   message: string;
   0: number;
+}
+
+export interface ApiRegisterResponse {
+  data: {
+    message: string;
+    user: ApiUser;
+  };
+  status: number;
+  statusText: string;
 }
