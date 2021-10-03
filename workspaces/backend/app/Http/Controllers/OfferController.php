@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class OfferController extends Controller
 {
+
     public function createOffer(Request $request){
         $offer = new Offer;
         $offer->offer_id = uniqid();

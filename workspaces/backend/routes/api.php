@@ -30,6 +30,7 @@ Route::group([
 });
 
 Route::group([
+    'middleware' => 'bearer',
     'prefix' => 'offers'
 
 ], function () {
