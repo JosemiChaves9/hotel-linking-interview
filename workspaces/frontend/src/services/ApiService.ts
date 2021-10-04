@@ -44,7 +44,7 @@ export class ApiService {
       (rej) => rej.response
     );
   }
-  static async userProfile(): Promise<{ data: ApiUser }> {
+  static async userProfile(): Promise<{ data: ApiUser; status: number }> {
     return instance.get('/auth/user-profile').then(
       (res: AxiosResponse<ApiUser>) => res,
       (rej) => rej.response

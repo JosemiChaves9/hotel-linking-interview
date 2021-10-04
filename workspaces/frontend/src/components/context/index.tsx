@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 import { ApiService } from '../../services/ApiService';
 import { LocalStorageService } from '../../services/LocalStorageService';
 import { ApiUser } from '../../types';
@@ -12,15 +13,17 @@ export const UserContext = React.createContext<Context>({
 });
 export const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
   const [user, setUser] = useState<ApiUser | null>(null);
+  const history = useHistory();
 
   const getUser = async () => {
     await ApiService.userProfile().then(
       (res) => {
-        if (res) {
+        if (res.status === 200) {
           setUser(res.data);
         } else {
           setUser(null);
           LocalStorageService.removeItem('access_token');
+          history.push('/login');
         }
       },
       () => {
@@ -32,6 +35,7 @@ export const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
 
   useEffect(() => {
     getUser();
+    // eslint-disable-next-line
   }, []);
 
   return (

@@ -14,8 +14,8 @@ import { Signup } from './pages/signup';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ContextProvider>
-      <Router>
+    <Router>
+      <ContextProvider>
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path='/myOffers' component={MyOffers} />
@@ -25,8 +25,8 @@ ReactDOM.render(
           <Route path='/error' component={Error} />
           <Route component={Page404} />
         </Switch>
-      </Router>
-    </ContextProvider>
+      </ContextProvider>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
