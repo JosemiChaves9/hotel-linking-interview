@@ -1,4 +1,3 @@
-import { userInfo } from 'os';
 import { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import { UserContext } from '../../components/context';

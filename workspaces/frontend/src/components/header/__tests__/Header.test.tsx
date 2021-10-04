@@ -18,14 +18,4 @@ describe('Tests for the header component', () => {
   test('renders content', () => {
     component.getByText('Offers');
   });
-
-  // test('When clicks in logout, clear LocalStorage', () => {
-  //   localStorage.setItem('access_token', '5e54dw4das5d');
-  //   const logoutButton = component.getByText('Logout');
-  //   console.log(logoutButton);
-  //   fireEvent.click(logoutButton);
-  //   console.log(localStorage.getItem('access_token'));
-
-  //   expect(localStorage.getItem('access_token')).toBeUndefined;
-  // });
 });
