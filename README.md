@@ -101,6 +101,10 @@ You can clone the project in several ways:
     ```
     And a secret key will generate and store in the .env.
     
+5. **Generate App Key**
+
+    You'll need to run `php artisan key:generate` in order to have a key to run the app
+    
 ## Start the app
 1. **Start the services**
     - `yarn startFront`
