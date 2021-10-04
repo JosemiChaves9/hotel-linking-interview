@@ -64,6 +64,11 @@ You can clone the project in several ways:
 1. **Install php, npm, yarn, node.js and Composer**
 
     Follow these [tutorial](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) for installing Node.js and npm, once you have installed npm you can install yarn with `npm install -g yarn`, then you install PHP (follow [this tutorial](https://kinsta.com/blog/install-php/)) and finally you can install [Composer](https://getcomposer.org/download/).
+    
+    You'll need to install all the PHP plugins also with: 
+   ```bash
+   sudo apt install openssl php-common php-curl php-json php-mbstring php-mysql php-xml php-zip
+   ```
 
 2. **Install dependencies**
     - in workspaces/backend run `composer install`
