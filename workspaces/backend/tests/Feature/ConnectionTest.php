@@ -38,7 +38,6 @@ class ConnectionTest extends TestCase
     }
 
     public function test_register_a_user(){
-
          $response= $this->post('api/auth/register', ["name"=>"Test User", "email" =>"test@test.com", "password"=>"Password12345", "password_confirmation"=>"Password12345"]);
 
         $response->assertStatus(201);
